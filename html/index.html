@@ -1,0 +1,122 @@
+<?php
+	require 'config.php';
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>BUY Items</title> 
+		<link rel="icon" href="../images/icon.png" type="image/png" sizes="16x16">
+		<link rel="stylesheet" href="../css/awesome/css/all.css">
+		<link rel="stylesheet" type = "text/css" href="../css/mainstylesheet.css"> 
+		<link rel="stylesheet" type = "text/css" href="../css/store.css">
+		<link rel ="stylesheet" type="text/css" href ="../styles/style.css">
+
+		<!--
+		<script src="../js/.js"></script>-->
+		<script src ="../js/news.js"></script>
+	</head>
+	<!--strat of header -->
+		<header class="header">
+			<!--banner-->
+			<div class="topbanner"><img src="../images/banner.gif"></div>
+			<!--navbar-->
+					<ul class="navbar">
+					<li class="menu"><a href ="home.html">Home</a></li>
+					<li class="menu"><a href ="signup.html">Sign Up</a></li>
+					<li class="menu"><a href ="Sign in.html">Sign In</a></li>
+					<li class="dropdown">
+						<a href="sell on.html" class="dropbtn">Sell on </i></a>
+					<div class="dropdown-content">
+						<a href="sellersignin.html">Seller Login</a>
+					</div>
+				</li>
+					<li class="menu1"><a href ="cart.php"><i class="fas fa-shopping-cart"></i><a></li>
+					<li class="menu1"><a href =""> <i class="far fa-bell"></i></i><a></li>
+					<li class="menu1"><a href ="Account.html">Account <i class="far fa-user"></i></a></li>
+					<li class="menu1"><a href ="Contact.html">Contact us<a></li>
+			</ul>
+			<!--logo -->
+			<img src="../images/logo.gif" class="logo" >
+			<!--search and cart -->
+			<div class="wrapper" class="box" >
+				<input type="text" class="input" placeholder="What are you looking for?">
+				<div class="searchbtn"><i class="fas fa-search"></i></div>
+				<div class="cart"> <i class="fas fa-2x fa-shopping-cart" ></i> </div>
+			</div>
+			
+			
+		</header>	<!--end of header -->
+		
+	<!-- Start of body-->
+	
+		<body>
+	
+		<button><a href ="addItems.html"> Add Items  </a></button>
+
+	<div class="productionData" id="tb1" style="border-style:groove";>
+
+	<table background-color ="white" width="100%"   border=  "1">
+		<tr>
+			<th>Item name</th>
+			<th>Item Name</th>
+			<th>Item Code</th>
+			<th>Item Brand</th>
+			<th>Price</th>
+			<th>Quanity</th>
+		</tr>
+		<?php
+			$sql = "select * from item";
+			$result= $conn->query($sql);
+			
+			if($result->num_row>0){
+				while($row = $result->fetch_assoc()){
+					
+					echo"<tr><td>".$row["Item_id"]."</td><td>".$row["Item_name"]."</td><td>".$row["Item_description"]."</td><td>".$row["Price"]."</td><td>".$row["Quantity"]."</td><td>".$row["Item_code"]."</td></tr>";
+				
+				}
+			}
+			else{
+				echo "0 result";
+			}
+			echo "</table>";
+			$conn->close();
+		?>
+
+
+</div>
+
+<center>
+					
+	
+		</body>
+<!--end of Body content -->	
+		<!-- Start of footer -->
+		<footer class="footer">
+			<table border="0" id="footertable">
+				<tr>
+					<td>	<a href="" class="tbheading">Payments</a>  </td>
+					<td>	<a href="" class="tbheading">Follow Us</a> </td>
+					<td>	<a href="" class="tbheading">Contact Us</a> </td>
+					<td>	<a class="tbheading">Verified by</a> </td>
+				</tr>	
+				<tr>
+					<td>	<img src="../images/payment.png" id="payveri"> </td>
+					<td>	
+						<ul class="icon">
+							<li class="icon"> <a href="#"> <i class="fab fa-2x fa-facebook" class="ficon" style="color:blue"></i> </a></li>
+							<li class="icon"> <a href="#"> <i class="fab fa-2x fa-instagram" class="ficon" style="color:brown"></i> </a></li>
+							<li class="icon"> <a href="#"> <i class="fab fa-2x fa-twitter-square" class="ficon" style="color:#00acee"></i> </a></li>
+							<li class="icon"> <a href="#"> <i class="fab fa-2x fa-google-plus-square" class="ficon" style="color:#db4a39"></i> </a></li>
+						</ul>
+					</td>
+					<td><a href="#"><i class="fas fa-1x fa-envelope" id="cicon"> info@vdaatexpress.com</i></a></td>
+					<td> <img src="../images/verified.png" id="payveri">	</td>
+				</tr> 
+			</table>	
+			<p id="label"> &copy; Vdaat Express <script>document.write(new Date().getFullYear());</script>.  All rights reserved. </p>
+		</footer>
+		<!--end of header -->
+</html>
